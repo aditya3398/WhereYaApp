@@ -19,4 +19,26 @@
     </string>
     <string name="title_activity_location">Location</string>
     <string name="title_activity_where_am_iat">WhereAmIAt</string>
+    <string name="facebook_app_id">2321827204623063</string>
+    <string name="fb_login_protocol_scheme">2321827204623063</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <string name="hint_user_id">User ID</string>
+    <string name="get_custom_token">Get Token</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="loading">Loading…</string>
+    <string name="custom_token">Custom Token</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="token_null">Token: null</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="facebook_status_fmt">Facebook User: %s</string>
+    <string name="facebook_title_text">Facebook Login</string>
 </resources>
