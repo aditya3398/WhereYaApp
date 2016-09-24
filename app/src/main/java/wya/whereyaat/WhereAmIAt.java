@@ -47,15 +47,18 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_BUTTON_PRESS){
+        if (event.getAction() == MotionEvent.ACTION_DOWN){
             try {
                 location = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
             }
             catch (SecurityException e){
                 e.printStackTrace();
             }
-            b.setText("Latitude"+ location.getLatitude());
+            b.setText("Latitude: "+ location.getLatitude());
         }
         return true;
+    }
+    private Location getLocationOfUser(){
+        return location;
     }
 }
