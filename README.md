@@ -1,4 +1,4 @@
-# WhereYaAt
+# WhereYaApp
 
 *HackGT 2016*
 
