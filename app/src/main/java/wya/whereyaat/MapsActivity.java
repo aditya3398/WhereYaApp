@@ -1,5 +1,6 @@
 package wya.whereyaat;
 
+import android.content.Intent;
 import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -22,11 +23,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        passedValue= getIntent().getStringExtra("EXTRA_TEXT");
-        LatLng l = new LatLng(Double.parseDouble(passedValue.substring(0,passedValue.indexOf(" "))),
-                Double.parseDouble(passedValue.substring(passedValue.indexOf(" "),passedValue.length())));
+        Intent i = getIntent();
+        Bundle b = i.getBundleExtra("EXTRA");
+        //ArrayList<Person> persons = i.getParcelableArrayListExtra("EXTRA");
+       LatLng l = new LatLng(Double.parseDouble(passedValue.substring(0,passedValue.indexOf(" "))),
+               Double.parseDouble(passedValue.substring(passedValue.indexOf(" "),passedValue.length())));
+
         setContentView(R.layout.activity_maps);
-        for (double x = 0.0; x<10.5; x++){
+        for (int x = 0; x<10.5; x++){
             listOfLocations.add(new LatLng(40.0,x+10.0));
 
         }

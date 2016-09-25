@@ -8,10 +8,14 @@ public class Location implements Comparable{
 
     private int frequency = 0;
     private String location = "";
+    private double latitude = 0.0;
+    private double longitude = 0.0;
 
-    public Location(int frequency, String location){
+    public Location(int frequency, String location, double latitude, double longitude){
         this.frequency = frequency;
         this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getLocation(){

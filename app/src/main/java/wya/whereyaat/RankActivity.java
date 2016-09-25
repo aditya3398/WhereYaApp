@@ -36,6 +36,7 @@ public class RankActivity extends Activity {
     private TextView rank3;
     private TextView rank4;
     private TextView rank5;
+    ArrayList<Location> locs
 
     private TextView friends1;
     private TextView friends2;
@@ -77,7 +78,7 @@ public class RankActivity extends Activity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 PlaceThing placeThing = dataSnapshot.getValue(PlaceThing.class);
-                persons.add(new Person(placeThing.getAuthor(), placeThing.getId()));
+                persons.add(new Person(placeThing.getAuthor(), placeThing.getId(),placeThing.getLongitude(),placeThing.getLatitude()));
             }
 
             @Override
@@ -135,10 +136,24 @@ public class RankActivity extends Activity {
         persons.add(q);
         persons.add(r);*/
 
-        rankEm(persons);
+       locs = rankEm(persons);
+//        Button b = (Button)findViewById(R.id.openMap);
+//        b.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelableArrayList("Locations", locs);
+//                intent.putExtra("EXTRA", bundle);
+//                startActivity(intent);
+//            }
+//        });
+
+
+
     }
 
-    public void rankEm(ArrayList<Person> persons){
+    public ArrayList<Location> rankEm(ArrayList<Person> persons){
 
         //complex algorithm --> simplify please
 
@@ -157,6 +172,17 @@ public class RankActivity extends Activity {
         String counter3Location = "";
         String counter4Location = "";
         String counter5Location = "";
+        double longitude1 = 0.0;
+        double longitude2 = 0.0;
+        double longitude3 = 0.0;
+        double longitude4 = 0.0;
+        double longitude5 = 0.0;
+        double latitude1= 0.0;
+        double latitude2= 0.0;
+        double latitude3= 0.0;
+        double latitude4= 0.0;
+        double latitude5= 0.0;
+
 
         for(int x = 0; x < persons.size(); x++){
             grandCounter++;
@@ -170,32 +196,42 @@ public class RankActivity extends Activity {
                     if(grandCounter==1){
                         counter1++;
                         counter1Location = persons.get(x).getLocation();
+                        longitude1 = persons.get(x).getLongitude();
+                        latitude1 = persons.get(x).getLatitude();
                     }
                     if(grandCounter==2){
                         counter2++;
                         counter2Location = persons.get(x).getLocation();
+                        longitude2 = persons.get(x).getLongitude();
+                        latitude2 = persons.get(x).getLatitude();
                     }
                     if(grandCounter==3){
                         counter3++;
                         counter3Location = persons.get(x).getLocation();
+                        longitude3 = persons.get(x).getLongitude();
+                        latitude3 = persons.get(x).getLatitude();
                     }
                     if(grandCounter==4){
                         counter4++;
                         counter4Location = persons.get(x).getLocation();
+                        longitude4 = persons.get(x).getLongitude();
+                        latitude4 = persons.get(x).getLatitude();
                     }
                     if(grandCounter==5){
                         counter5++;
                         counter5Location = persons.get(x).getLocation();
+                        longitude5 = persons.get(x).getLongitude();
+                        latitude5 = persons.get(x).getLatitude();
                     }
 
                     if(grandCounter>=6){
 
                         if(grandCounter==6){
-                            Location location1 = new Location(counter1, counter1Location);
-                            Location location2 = new Location(counter2, counter2Location);
-                            Location location3 = new Location(counter3, counter3Location);
-                            Location location4 = new Location(counter4, counter4Location);
-                            Location location5 = new Location(counter5, counter5Location);
+                            Location location1 = new Location(counter1, counter1Location,latitude1,longitude1);
+                            Location location2 = new Location(counter2, counter2Location,latitude2,longitude2);
+                            Location location3 = new Location(counter3, counter3Location,latitude3,longitude3);
+                            Location location4 = new Location(counter4, counter4Location,latitude4,longitude4);
+                            Location location5 = new Location(counter5, counter5Location,latitude5,longitude5);
 
                             locations.add(location1);
                             locations.add(location2);
@@ -226,6 +262,7 @@ public class RankActivity extends Activity {
         sortBasedOnFrequency(locations);
         displayRanks(locations);
 
+        return locations;
 
     }
 
