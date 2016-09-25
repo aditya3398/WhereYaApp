@@ -28,4 +28,6 @@
     <string name="screen5title">Join Us</string>
     <string name="screen5text">This is the community we\'re creating. Come join us!</string>
     <string name="continueButton">Authenticate with Facebook</string>
+
+    <string name="whereamiatInstructions">Which location are you in? or which is closest to you?</string>
 </resources>
