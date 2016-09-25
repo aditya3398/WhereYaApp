@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,GoogleApiClient.OnConnectionFailedListener,View.OnTouchListener {
 
@@ -28,6 +30,14 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_where_am_iat);
+
+        //Check whether the user is signed in.
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent intent = new Intent(this, OnboardingActivity.class);
+            startActivity(intent);
+        }
+
         b = (Button)findViewById(R.id.showLocationButton);
         b.setOnTouchListener(this);
         textView = (TextView)findViewById(R.id.revealLocation);
