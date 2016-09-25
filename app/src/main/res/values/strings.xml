@@ -9,6 +9,8 @@
     <string name="facebook_app_id">2321827204623063</string>
     <string name="fb_login_protocol_scheme">2321827204623063</string>
 
+    <string name="title_activity_maps">Maps</string>
+
     <!-- Strings related to login -->
     <string name="loginTitle">Here\'s the big moment. Don\'t panic!</string>
 
