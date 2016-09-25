@@ -10,7 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="wya.whereyaat.LoginActivity"
     android:background="@color/veryLightGrey"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:isScrollContainer="true">
 
     <android.support.v7.widget.CardView
         android:layout_marginTop="15dp"
@@ -19,7 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:cardCornerRadius="1dp"
-        android:onClick="details"
         android:backgroundTint="@color/colorWhite">
 
         <ImageView
@@ -63,7 +63,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:cardCornerRadius="1dp"
-        android:onClick="details"
         android:backgroundTint="@color/colorWhite">
 
         <ImageView
@@ -107,7 +106,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:cardCornerRadius="1dp"
-        android:onClick="details"
         android:backgroundTint="@color/colorWhite">
 
         <ImageView
@@ -151,7 +149,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:cardCornerRadius="1dp"
-        android:onClick="details"
         android:backgroundTint="@color/colorWhite">
 
         <ImageView
@@ -195,7 +192,6 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:cardCornerRadius="1dp"
-        android:onClick="details"
         android:backgroundTint="@color/colorWhite">
 
         <ImageView
