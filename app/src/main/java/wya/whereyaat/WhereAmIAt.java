@@ -76,6 +76,7 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
         }
         return true;
     }
+
     private Location getLocationOfUser(){
         if(location != null){
             return location;
