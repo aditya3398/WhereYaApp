@@ -21,10 +21,7 @@
 
         <activity
             android:name=".LoginActivity"
-<<<<<<< HEAD
             android:label="@string/app_name">
-=======
-            android:label="@string/app_name" >
         </activity>
 
         <activity
@@ -36,7 +33,6 @@
             android:name=".WhereAmIAt"
             android:label="@string/title_activity_where_am_iat"
             android:theme="@style/AppTheme.NoActionBar" >
->>>>>>> 3b1c7abe4436433dfefe6ba164a4a67513e3bcb7
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,10 +40,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".WhereAmIAt"
-            android:label="@string/title_activity_where_am_iat"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
