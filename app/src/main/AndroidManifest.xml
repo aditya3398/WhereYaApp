@@ -21,31 +21,25 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
-        </activity>
-
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".OnboardingActivity"
-            android:label="@string/app_name" >
-        </activity>
-
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".WhereAmIAt"
             android:label="@string/title_activity_where_am_iat"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -73,13 +67,16 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"/>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".RankActivity"
-            android:label="@string/rank"/>
+            android:label="@string/rank" />
         <activity
             android:name=".Friends"
-            android:label="@string/friends"/>
+            android:label="@string/friends" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
