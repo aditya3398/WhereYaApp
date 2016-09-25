@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Where Ya At</string>
-
+    <string name="rank">Hot Locations</string>
+    <string name="friends">Friends</string>
     <string name="google_maps_key" translatable="false">
         AIzaSyDbfKFKVeCM_VkdCWBdweJIqlvZSjPzsEE
     </string>

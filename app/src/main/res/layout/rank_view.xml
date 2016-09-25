@@ -9,109 +9,227 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="wya.whereyaat.LoginActivity"
-    android:background="@color/colorWhite"
+    android:background="@color/veryLightGrey"
     android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hot Locations"
-        android:textStyle="italic|bold"
-        android:textSize="30dp"
-        android:gravity="center|top"
-        android:paddingBottom="10dp"/>
-
-
-    <TextView
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/card_view1"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:text="Hack GT"
-        android:textSize="50dp"
-        android:id="@+id/rank1TextView" />
+        android:layout_height="100dp"
+        app:cardCornerRadius="1dp"
+        android:onClick="details"
+        android:backgroundTint="@color/colorWhite">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="43 Friends"
-        android:textSize="50dp"
-        android:id="@+id/friends1TextView"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimaryReallyLight"
+            android:layout_gravity="right"
+            android:id="@+id/image1"/>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="100dp"
+                android:text="HackGT"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/rank1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="100dp"
+                android:text="43 friends"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/friends1"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-
-    <TextView
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/card_view2"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:text="GT v. Clemson"
-        android:textSize="40dp"
-        android:id="@+id/rank2TextView" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="39 Friends"
-        android:textSize="40dp"
-        android:id="@+id/friends2TextView"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:layout_height="100dp"
+        app:cardCornerRadius="1dp"
+        android:onClick="details"
+        android:backgroundTint="@color/colorWhite">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent2"
+            android:layout_gravity="right"
+            android:id="@+id/image2"/>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="100dp"
+                android:text="Van Leer"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/rank2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="100dp"
+                android:text="32 friends"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/friends2"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    <TextView
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/card_view3"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:text="CRC"
-        android:textSize="35dp"
-        android:id="@+id/rank3TextView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="24 Friends"
-        android:textSize="35dp"
-        android:id="@+id/friends3TextView"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:layout_height="100dp"
+        app:cardCornerRadius="1dp"
+        android:onClick="details"
+        android:backgroundTint="@color/colorWhite">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="right"
+            android:id="@+id/image3"/>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="100dp"
+                android:text="Starbucks @ Clough"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/rank3"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="100dp"
+                android:text="23 friends"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/friends3"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    <TextView
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/card_view4"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:text="Britain Dining Hall"
-        android:textSize="30dp"
-        android:id="@+id/rank4TextView"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="13 Friends"
-        android:textSize="30dp"
-        android:id="@+id/friends4TextView"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:layout_height="100dp"
+        app:cardCornerRadius="1dp"
+        android:onClick="details"
+        android:backgroundTint="@color/colorWhite">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_gravity="right"
+            android:id="@+id/image4"/>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="100dp"
+                android:text="The Varsity"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/rank4"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="100dp"
+                android:text="19 friends"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/friends4"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    <TextView
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="15dp"
+        android:id="@+id/card_view5"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
-        android:text="Home Park"
-        android:textSize="25dp"
-        android:id="@+id/rank5TextView"/>
+        android:layout_height="100dp"
+        app:cardCornerRadius="1dp"
+        android:onClick="details"
+        android:backgroundTint="@color/colorWhite">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4 Friends"
-        android:textSize="25dp"
-        android:id="@+id/friends5TextView"
-        android:paddingBottom="5dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorAccent"
+            android:layout_gravity="right"
+            android:id="@+id/image5"/>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="100dp"
+                android:text="Hartsfield-Jackson Atlanta International Airport"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:id="@+id/rank5"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="100dp"
+                android:text="6 friends"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/friends5"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
