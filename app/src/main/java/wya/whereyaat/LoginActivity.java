@@ -2,10 +2,16 @@ package wya.whereyaat;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,21 +34,12 @@ import com.google.firebase.auth.FirebaseUser;
 /**
  * A login screen that signs users in using Facebook/Firebase
  */
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends Activity {
 
-    private static final String TAG = "FacebookLogin";
+    private static final String TAG = "WHEREYAAPP";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
-
-    // [START declare_auth]
     private FirebaseAuth mAuth;
-    // [END declare_auth]
-
-    // [START declare_auth_listener]
     private FirebaseAuth.AuthStateListener mAuthListener;
-    // [END declare_auth_listener]
-
     private CallbackManager mCallbackManager;
 
     @Override
@@ -51,37 +48,24 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
 
-        // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
-        findViewById(R.id.button_facebook_signout).setOnClickListener(this);
+        //setStatusBarColor(findViewById(R.id.statusBarBackground), ContextCompat.getColor(this, R.color.transparent));
 
-        // [START initialize_auth]
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
-
-        // [START auth_state_listener]
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d(TAG, "SIGNEDIN:" + user.getUid());
+                    updateUI(user);
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    Log.d(TAG, "NOT SIGNEDIN");
                 }
-                // [START_EXCLUDE]
-                updateUI(user);
-                // [END_EXCLUDE]
             }
         };
-        // [END auth_state_listener]
 
-        // [START initialize_fblogin]
-        // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) findViewById(R.id.button_facebook_login);
         loginButton.setReadPermissions("email", "public_profile");
@@ -95,31 +79,23 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onCancel() {
                 Log.d(TAG, "facebook:onCancel");
-                // [START_EXCLUDE]
                 updateUI(null);
-                // [END_EXCLUDE]
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d(TAG, "facebook:onError", error);
-                // [START_EXCLUDE]
                 updateUI(null);
-                // [END_EXCLUDE]
             }
         });
-        // [END initialize_fblogin]
     }
 
-    // [START on_start_add_listener]
     @Override
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
-    // [END on_start_add_listener]
 
-    // [START on_stop_remove_listener]
     @Override
     public void onStop() {
         super.onStop();
@@ -127,7 +103,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-    // [END on_stop_remove_listener]
 
 
     @Override
@@ -136,12 +111,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    // [START auth_with_facebook]
     private void handleFacebookAccessToken(AccessToken token) {
-        Log.d(TAG, "handleFacebookAccessToken:" + token);
-        // [START_EXCLUDE silent]
         Log.d(TAG, "show loading");
-        // [END_EXCLUDE]
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
@@ -159,44 +130,53 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        // [START_EXCLUDE]
                         Log.d(TAG, "hide loading");
-                        // [END_EXCLUDE]
                     }
                 });
-    }
-    // [END auth_with_facebook]
-
-    public void signOut() {
-        mAuth.signOut();
-        LoginManager.getInstance().logOut();
-
-        updateUI(null);
     }
 
     private void updateUI(FirebaseUser user) {
         Log.d(TAG, "hide loading");
         if (user != null) {
-            mStatusTextView.setText(getString(R.string.facebook_status_fmt, user.getDisplayName()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
-            findViewById(R.id.button_facebook_login).setVisibility(View.GONE);
-            findViewById(R.id.button_facebook_signout).setVisibility(View.VISIBLE);
+            Intent intent = new Intent(this, WhereAmIAt.class);
+            startActivity(intent);
         } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
-
-            findViewById(R.id.button_facebook_login).setVisibility(View.VISIBLE);
-            findViewById(R.id.button_facebook_signout).setVisibility(View.GONE);
+            Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, OnboardingActivity.class);
+            startActivity(intent);
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.button_facebook_signout) {
-            signOut();
+    public void setStatusBarColor(View statusBar, int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //status bar height
+            int actionBarHeight = getActionBarHeight();
+            int statusBarHeight = getStatusBarHeight();
+            //action bar height
+            statusBar.getLayoutParams().height = actionBarHeight + statusBarHeight;
+            statusBar.setBackgroundColor(color);
         }
+    }
+
+    public int getActionBarHeight() {
+        int actionBarHeight = 0;
+        TypedValue tv = new TypedValue();
+        if (getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true))
+        {
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,getResources().getDisplayMetrics());
+        }
+        return actionBarHeight;
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 }
 

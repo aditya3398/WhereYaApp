@@ -15,3 +15,10 @@ An application that uses the Facebook and Google Maps API to track friends’ lo
 1) Data Aggregation <br />
 2) Ranking <br />
 3) Notification <br />
+
+#APIs Used:
+
+1) AWS SDK <br />
+2) Firebase SDK <br />
+3) Google Place API <br />
+4) Google Maps GMS API <br />
