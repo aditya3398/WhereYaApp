@@ -30,7 +30,7 @@ public class RankActivity extends Activity {
     private TextView friends4;
     private TextView friends5;
 
-
+    private boolean removedElements = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +42,11 @@ public class RankActivity extends Activity {
 
         //Dummy values hardcoded:
 
-        Person a = new Person("Sammy", "CRC");
-        Person b = new Person("Bobby", "CRC");
-        Person c = new Person("Harris", "HackGT");
+        Person a = new Person("Sammy", "Sweet Hut");
+        Person b = new Person("Bobby", "Sweet Hut");
+        Person c = new Person("Harris", "Sweet Hut");
         Person d = new Person("John", "Sweet Hut");
-        Person e = new Person("Bill", "Britain Dining Hall");
+        Person e = new Person("Bill", "CRC");
         Person f = new Person("Omar", "Waffle House");
         Person g = new Person("Tyrone", "CRC");
         Person h = new Person("Shukie", "Waffle House");
@@ -55,9 +55,9 @@ public class RankActivity extends Activity {
         Person k = new Person("Borg", "Hack GT");
         Person l = new Person("Andrew", "Instructional Center");
         Person m = new Person("Rob", "Bobby Dodd Stadium");
-        Person n = new Person("Harry", "Hack GT");
+        Person n = new Person("Harry", "Sweet Hut");
         Person o = new Person("Aditya", "Hack GT");
-        Person p = new Person("Binit", "CRC");
+        Person p = new Person("Binit", "Sweet Hut");
         Person q = new Person("Akash", "Waffle House");
         Person r = new Person("Kunal", "Sweet Hut");
 
@@ -164,6 +164,10 @@ public class RankActivity extends Activity {
 
             sideCounter = 0;
             removeLocations(persons.get(x).getLocation());
+            if(removedElements){
+                x = -1;
+                removedElements = false;
+            }
         }
 
         sortBasedOnFrequency(locations);
@@ -184,8 +188,11 @@ public class RankActivity extends Activity {
     public void removeLocations(String location){
 
         for(int x = 0; x < persons.size(); x++){
-            if(persons.get(x).getLocation().equals(location))
+            if(persons.get(x).getLocation().equals(location)){
                 persons.remove(persons.get(x));
+                removedElements = true;
+            }
+
         }
 
     }
