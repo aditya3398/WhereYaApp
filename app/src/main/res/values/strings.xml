@@ -30,6 +30,8 @@
     <string name="continueButton">Authenticate with Facebook</string>
     <string name="title_activity_settings">Settings</string>
 
+    <string name="whereamiatInstructions">Which location are you in? or which is closest to you?</string>
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
