@@ -1,6 +1,8 @@
 package wya.whereyaat;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,GoogleApiClient.OnConnectionFailedListener,View.OnTouchListener {
 
@@ -25,6 +29,13 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_where_am_iat);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent intent = new Intent(this, OnboardingActivity.class);
+            startActivity(intent);
+        }
+
         b = (Button)findViewById(R.id.showLocationButton);
         b.setOnTouchListener(this);
         if(myGoogleApiClient == null){

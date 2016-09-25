@@ -1,44 +1,27 @@
 <resources>
-    <string name="app_name">Where Ya At</string>
+    <string name="app_name">WhereYaApp</string>
 
-    <string name= "google_maps_key" translatable="false">
-        AIzaSyDbfKFKVeCM_VkdCWBdweJIqlvZSjPzsEE
-    </string>
+    <string name="google_maps_key" translatable="false">AIzaSyDbfKFKVeCM_VkdCWBdweJIqlvZSjPzsEE</string>
+    <string name="MY_PREFS_NAME">MYPREFERENCES</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="title_activity_location">Location</string>
     <string name="title_activity_where_am_iat">WhereAmIAt</string>
     <string name="facebook_app_id">2321827204623063</string>
     <string name="fb_login_protocol_scheme">2321827204623063</string>
 
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
+    <!-- Strings related to login -->
+    <string name="loginTitle">Here\'s the big moment. Don\'t panic!</string>
 
-    <string name="hint_user_id">User ID</string>
-    <string name="get_custom_token">Get Token</string>
-    <string name="sign_in">Sign In</string>
-    <string name="create_account">Create Account</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="loading">Loading…</string>
-    <string name="custom_token">Custom Token</string>
-    <string name="signed_out">Signed Out</string>
-    <string name="token_null">Token: null</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="desc_firebase_lockup">Firebase logo and name</string>
-    <string name="auth_failed">Authentication failed</string>
-    <string name="facebook_status_fmt">Facebook User: %s</string>
-    <string name="facebook_title_text">Facebook Login</string>
+    <!-- Onboarding -->
+    <string name="screen1title">WhereYaApp</string>
+    <string name="screen1text">We rank famous (past), hot (current), and rising (future) places to hang out based on the frequency of location check-in. WhereYaApp also alerts you in real time if a certain number of your friends create a hotspot by checking into locations within close proximity.</string>
+    <string name="screen2title">Social</string>
+    <string name="screen2text">WhereYaApp accesses your Facebook friends in order to let you know in real time when you\'re near family, friends or evens friends of a friend.</string>
+    <string name="screen3title">Safety</string>
+    <string name="screen3text">Be able to know exactly when and where someone you care for last checked in.</string>
+    <string name="screen4title">Discover</string>
+    <string name="screen4text">Our algorithms are constantly working to find the newest up and coming places so you can always be where the scene is.</string>
+    <string name="screen5title">Join Us</string>
+    <string name="screen5text">This is the community we\'re creating. Come join us!</string>
+    <string name="continueButton">Authenticate with Facebook</string>
 </resources>
