@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
  */
 
 public class PlaceThing {
+    public String author;
     public String title;
     public String id;
     public String address;
@@ -15,7 +16,8 @@ public class PlaceThing {
     public double longitude;
     public double latitude;
 
-    public PlaceThing(String titleHolder, String idHolder, String addressHolder, String timeHolder, double longitudeHolder, double latitudeHolder){
+    public PlaceThing(String authorHolder, String titleHolder, String idHolder, String addressHolder, String timeHolder, double longitudeHolder, double latitudeHolder){
+        author = authorHolder;
         title = titleHolder;
         id = idHolder;
         address = addressHolder;
@@ -25,7 +27,8 @@ public class PlaceThing {
         latitude = latitudeHolder;
     }
 
-    public PlaceThing(String timeHolder, double longitudeHolder, double latitudeHolder){
+    public PlaceThing(String authorHolder, String timeHolder, double longitudeHolder, double latitudeHolder){
+        author = authorHolder;
         title = "";
         id = "";
         address = "";
@@ -33,6 +36,14 @@ public class PlaceThing {
         //image = null;
         longitude = longitudeHolder;
         latitude = latitudeHolder;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getTitle() {

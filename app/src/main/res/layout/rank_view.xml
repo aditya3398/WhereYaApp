@@ -228,4 +228,10 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
+    <Button
+        android:id="@+id/newCheckin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add location"
+        android:background="@color/colorAccent"/>
 </LinearLayout>

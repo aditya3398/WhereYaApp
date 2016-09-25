@@ -1,6 +1,7 @@
 package wya.whereyaat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -52,6 +53,8 @@ public class PlaceThingAdapter extends RecyclerView.Adapter<PlaceThingAdapter.Pl
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 mDatabase.child("users").child(user.getUid()).setValue(placeThing);
+                Intent intent = new Intent(context, MapsActivity.class);
+                context.startActivity(intent);
             }
         });
     }

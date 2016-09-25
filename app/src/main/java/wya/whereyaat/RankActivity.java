@@ -1,13 +1,25 @@
 package wya.whereyaat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by shuka on 9/24/2016.
@@ -15,8 +27,9 @@ import java.util.Collections;
 
 public class RankActivity extends Activity {
 
-    private ArrayList<Person> persons = new ArrayList<Person>();
     private ArrayList<Location> locations = new ArrayList<Location>();
+
+    public final String TAG = "WHEREYAAPP";
 
     private TextView rank1;
     private TextView rank2;
@@ -32,17 +45,58 @@ public class RankActivity extends Activity {
 
     private boolean removedElements = false;
 
+    Button newCheckin;
+    DatabaseReference mPostReference;
+    ArrayList<Person> persons = new ArrayList<Person>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rank_view);
+
+        //Check whether the user is signed in.
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent intent = new Intent(this, OnboardingActivity.class);
+            startActivity(intent);
+        }
+
+        newCheckin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WhereAmIAt.class);
+                startActivity(intent);
+            }
+        });
+
+        mPostReference = FirebaseDatabase.getInstance().getReference()
+                .child("users");
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                PlaceThing placeThing = dataSnapshot.getValue(PlaceThing.class);
+                persons.add(new Person(placeThing.getAuthor(), placeThing.getId()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        mPostReference.addValueEventListener(postListener);
+
+
 
         //obtains arraylist of person objects from database
         //calls rank algorithm method
 
         //Dummy values hardcoded:
 
-        Person a = new Person("Sammy", "Sweet Hut");
+        /*Person a = new Person("Sammy", "Sweet Hut");
         Person b = new Person("Bobby", "Sweet Hut");
         Person c = new Person("Harris", "Sweet Hut");
         Person d = new Person("John", "Sweet Hut");
@@ -62,7 +116,6 @@ public class RankActivity extends Activity {
         Person r = new Person("Kunal", "Sweet Hut");
 
 
-
         persons.add(a);
         persons.add(b);
         persons.add(c);
@@ -80,7 +133,7 @@ public class RankActivity extends Activity {
         persons.add(o);
         persons.add(p);
         persons.add(q);
-        persons.add(r);
+        persons.add(r);*/
 
         rankEm(persons);
     }

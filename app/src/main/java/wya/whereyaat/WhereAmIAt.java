@@ -48,19 +48,14 @@ public class WhereAmIAt extends Activity implements ActivityCompat.OnRequestPerm
     List<PlaceThing> placesthings = new ArrayList<PlaceThing>();
     //Bitmap image = null;
     String currentDateTimeString;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_where_am_iat);
 
-        //Check whether the user is signed in.
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent intent = new Intent(this, OnboardingActivity.class);
-            startActivity(intent);
-        }
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
@@ -114,7 +109,7 @@ public class WhereAmIAt extends Activity implements ActivityCompat.OnRequestPerm
                         ActivityCompat.requestPermissions(getParent(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
                     }
                     location = LocationServices.FusedLocationApi.getLastLocation(myGoogleApiClient);
-                    placesthings.add(new PlaceThing(placeLikelihood.getPlace().getName().toString(), placeLikelihood.getPlace().getId(), placeLikelihood.getPlace().getAddress().toString(), currentDateTimeString, location.getLongitude(), location.getLatitude()));
+                    placesthings.add(new PlaceThing(user.getDisplayName(), placeLikelihood.getPlace().getName().toString(), placeLikelihood.getPlace().getId(), placeLikelihood.getPlace().getAddress().toString(), currentDateTimeString, location.getLongitude(), location.getLatitude()));
                 }
                 likelyPlaces.release();
 
