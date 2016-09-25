@@ -2,7 +2,6 @@ package wya.whereyaat;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -11,12 +10,11 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,GoogleApiClient.OnConnectionFailedListener,View.OnTouchListener {
 
@@ -24,20 +22,15 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
     private Location location;
     private GoogleApiClient myGoogleApiClient = null;
     private Button b;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_where_am_iat);
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent intent = new Intent(this, OnboardingActivity.class);
-            startActivity(intent);
-        }
-
         b = (Button)findViewById(R.id.showLocationButton);
         b.setOnTouchListener(this);
+        textView = (TextView)findViewById(R.id.revealLocation);
         if(myGoogleApiClient == null){
             myGoogleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(LocationServices.API).build();
         }
@@ -65,11 +58,20 @@ public class WhereAmIAt extends AppCompatActivity implements ActivityCompat.OnRe
             catch (SecurityException e){
                 e.printStackTrace();
             }
-            b.setText("Latitude: "+ location.getLatitude());
+            textView.setText("Latitude: "+ location.getLatitude()+"Longitude: " + location.getLongitude());
+            Intent intent = new Intent(this, MapsActivity.class);
+            String latandlong=location.getLatitude()+" " + location.getLongitude();
+            intent.putExtra("EXTRA_TEXT", latandlong);
+            startActivity(intent);
         }
         return true;
     }
     private Location getLocationOfUser(){
-        return location;
+        if(location != null){
+            return location;
+        }
+        else{
+            return null;
+        }
     }
 }

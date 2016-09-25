@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "40890864888",
+    "firebase_url": "https://whereyaat-ce2cc.firebaseio.com",
+    "project_id": "whereyaat-ce2cc",
+    "storage_bucket": "whereyaat-ce2cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40890864888:android:1767368d10d32878",
+        "android_client_info": {
+          "package_name": "wya.whereyaat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40890864888-so6ef816g6gbccrcbrgttkon9rjo5788.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wya.whereyaat",
+            "certificate_hash": "38639BFB0070D80DD1FF31A4B7882E58CF870943"
+          }
+        },
+        {
+          "client_id": "40890864888-ad3umla17q46t59eq523thd4g0dv6tms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBffujopXkPEbnBvdG9W0YMcVVdC3XXMvs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40890864888-ad3umla17q46t59eq523thd4g0dv6tms.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
