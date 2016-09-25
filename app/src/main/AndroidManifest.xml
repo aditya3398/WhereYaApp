@@ -27,8 +27,8 @@
             android:label="@string/app_name"></activity>
         <activity
             android:name=".WhereAmIAt"
-            android:label="@string/title_activity_where_am_iat"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,9 +74,6 @@
         <activity
             android:name=".Friends"
             android:label="@string/friends" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
