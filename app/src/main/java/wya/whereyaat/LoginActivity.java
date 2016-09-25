@@ -20,6 +20,10 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphRequestAsyncTask;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -30,6 +34,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 /**
  * A login screen that signs users in using Facebook/Firebase
@@ -68,12 +75,33 @@ public class LoginActivity extends Activity {
 
         mCallbackManager = CallbackManager.Factory.create();
         LoginButton loginButton = (LoginButton) findViewById(R.id.button_facebook_login);
-        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.setReadPermissions("email", "public_profile", "user_friends");
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
+                GraphRequestAsyncTask asyncTask = new GraphRequest(
+                        loginResult.getAccessToken(),
+                        "/me/friends",
+                        null,
+                        HttpMethod.GET,
+                        new GraphRequest.Callback() {
+                            @Override
+                            public void onCompleted(GraphResponse response) {
+                                Intent intent = new Intent(LoginActivity.this, Friends.class);
+                                try {
+                                    JSONArray rawNames = response.getJSONObject().getJSONArray("data");
+                                    intent.putExtra("jsondata", rawNames.toString());
+                                    //startActivity(intent);
+                                }
+                                catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }
+                ).executeAsync();
             }
 
             @Override
